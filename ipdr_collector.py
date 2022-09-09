@@ -637,6 +637,7 @@ class Template():
             record_str = ','.join(records)
             self.file.write(record_str)
             self.file.write('\n')
+            self.file.flush()
 
     def __str__(self):
         return ('id: %d, schemaName %s, typeName %s\r\nfields\r\n%s' %(self.templateId,self.schemaName,self.typeName,'\r\n'.join(str(f) for f in self.fields)))
@@ -688,6 +689,7 @@ class Session():
             for f in t.fields:
                 field_header.append(f.fieldName)
             t.file.write('%s\n'%(','.join(field_header)))
+            t.file.flush()
 
 
     def CloseRecordFiles(self):
