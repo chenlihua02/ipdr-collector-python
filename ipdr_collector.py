@@ -121,7 +121,7 @@ def XdrDecode(type, rawData):
         rawData = rawData[4:]
         return struct.Struct('!%ds'%length).unpack_from(rawData, 0)[0]
     elif type == XDR_IPV4ADDR:
-        s = struct.Struct('!bbbb').unpack_from(rawData, 0)
+        s = struct.Struct('!BBBB').unpack_from(rawData, 0)
         return '.'.join(str(i) for i in s)
     elif type == XDR_IPV6ADDR:
         s = struct.Struct('!HHHHHHHH').unpack_from(rawData, 4)
@@ -130,7 +130,7 @@ def XdrDecode(type, rawData):
         length = struct.Struct('!i').unpack_from(rawData, 0)[0]
         rawData = rawData[4:]
         if length == 4:
-            s = struct.Struct('!bbbb').unpack_from(rawData, 0)
+            s = struct.Struct('!BBBB').unpack_from(rawData, 0)
             return '.'.join(str(i) for i in s)
         else:
             s = struct.Struct('!HHHHHHHH').unpack_from(rawData, 4)
