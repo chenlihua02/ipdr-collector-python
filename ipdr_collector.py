@@ -799,7 +799,7 @@ class ConnectionMgr(threading.Thread):
                 self.server.bind((initiator_addr, port))
                 self.server.listen(1)
                 print ('%s Listen at %s:%d...' %(time.strftime('[%Y-%m-%d %H:%M:%S] '), initiator_addr, port))
-        except Exception, err:
+        except Exception as err:
             print ('init connection error: %s %s %s' %(__file__, sys._getframe().f_lineno, err))
 
     def SetSessionMgr(self, s):
